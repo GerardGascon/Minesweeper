@@ -21,8 +21,14 @@ public class NewTestScript
         Assert.IsFalse(sut.IsRevealed(5, 1));
     }
     [Test]
-    public void asdaosdo23423k() {
+    public void CheckIfCellHasMine() {
         var sut = new MineSweeper(new Vector2Int(3,4));
         Assert.IsTrue(sut.HasMineIn(3,4));
+    }
+    [Test]
+    public void CheckIfCellHasNoMine()
+    {
+        var sut = new MineSweeper(new Vector2Int(0,0));
+        Assert.IsFalse(sut.HasMineIn(3, 4));
     }
 }
