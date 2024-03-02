@@ -14,4 +14,10 @@ public class NewTestScript
         
         Assert.IsTrue(sut.IsRevealed(4, 1));
     }
+    [Test]
+    public void asdaosdoj()
+    {
+        var sut = new MineSweeper();
+        Assert.IsFalse(sut.IsRevealed(5, 1));
+    }
 }
