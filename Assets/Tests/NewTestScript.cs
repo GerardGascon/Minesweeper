@@ -43,4 +43,12 @@ public class NewTestScript
         var sut = new MineSweeper(new Vector2Int(2, 2));
         Assert.AreEqual(0, sut.CheckAdjacentMines(4, 4));
     }
+    [Test]
+    public void jl32jlkk324()
+    {
+        var sut = new MineSweeper(new Vector2Int(2, 2));
+        Assert.AreEqual(
+            new List<Vector2Int> { new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1) },
+            sut.AdjacentOf(0, 0));
+    }
 }

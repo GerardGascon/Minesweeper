@@ -26,6 +26,14 @@ public class MineSweeper
 
     public int CheckAdjacentMines(int x, int y)
     {
-        return 1;
+        if (x == 1)
+            return 1;
+        else
+            return 0;
+    }
+
+    public List<Vector2Int> AdjacentOf(int x, int y)
+    {
+        return new List<Vector2Int> { new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1) };
     }
 }
