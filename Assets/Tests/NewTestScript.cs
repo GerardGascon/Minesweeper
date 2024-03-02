@@ -56,13 +56,13 @@ public class NewTestScript
     public void aspdrfuke() {
         var sut = new MineSweeper(new Vector2Int(1, 1));
         
-        Assert.AreEqual(
-            new List<Vector2Int> {
-                new(0, 0), new(0, 1), new(0, 2), 
-                new(1, 0), new(1, 2), new(2, 0),
-                new(2, 1), new(2, 2)
-            },
-            sut.AdjacentOf(1, 1)
-        );
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(0, 0)));
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(0, 1)));
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(0, 2)));
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(1, 0)));
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(1, 2)));
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(2, 0)));
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(2, 1)));
+        Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(2, 2)));
     }
 }

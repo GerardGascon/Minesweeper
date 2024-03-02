@@ -37,10 +37,19 @@ public class MineSweeper
         if (x == 0)
             return new List<Vector2Int> { new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1) };
 
-        return new List<Vector2Int> {
-            new(0, 0), new(0, 1), new(0, 2),
-            new(1, 0), new(1, 2), new(2, 0),
-            new(2, 1), new(2, 2)
-        };
+        var result = new List<Vector2Int>();
+        
+        for (var i = x - 1; i < x + 1; i++) {
+            for (var j = y - 1; j < y + 1; j++) {
+                if(i < 0 || j < 0) 
+                    continue;
+                if(i == x && j == y)
+                    continue;
+                
+                result.Add(new Vector2Int(i, j));
+            }
+        }
+
+        return result;
     }
 }
