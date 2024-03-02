@@ -35,7 +35,12 @@ public class NewTestScript
     public void asdadadsa()
     {
         var sut = new MineSweeper(new Vector2Int(2, 2));
-        sut.Reveal(1, 1);
-        Assert.AreEqual(sut.CheckAdjacentMines(1, 1), 1);
+        Assert.AreEqual(1, sut.CheckAdjacentMines(1, 1));
+    }
+    [Test]
+    public void asdadads2a()
+    {
+        var sut = new MineSweeper(new Vector2Int(2, 2));
+        Assert.AreEqual(0, sut.CheckAdjacentMines(4, 4));
     }
 }
