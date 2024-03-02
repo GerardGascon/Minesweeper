@@ -7,9 +7,16 @@ public class MineSweeper
 {
     private List<Vector2Int> cellsRevealed = new List<Vector2Int>();
     private List<Vector2Int> mines = new List<Vector2Int>();
+
     public MineSweeper(Vector2Int Mina) {
         mines.Add(Mina);
     }
+
+    public MineSweeper(List<Vector2Int> minas)
+    {
+        mines.AddRange(minas);
+    }
+
     public void Reveal(int x,int y)
     {
         cellsRevealed.Add(new Vector2Int(x,y));

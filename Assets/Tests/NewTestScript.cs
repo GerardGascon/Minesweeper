@@ -51,7 +51,6 @@ public class NewTestScript
             new List<Vector2Int> { new(1, 0), new(1, 1), new(0, 1) },
             sut.AdjacentOf(0, 0));
     }
-
     [Test]
     public void aspdrfuke() {
         var sut = new MineSweeper(new Vector2Int(1, 1));
@@ -65,4 +64,11 @@ public class NewTestScript
         Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(2, 1)));
         Assert.IsTrue(sut.AdjacentOf(1, 1).Contains(new Vector2Int(2, 2)));
     }
+    [Test]
+    public void fdsfsd5ff()
+    {
+        var sut = new MineSweeper(new Vector2Int(1,1));
+    }
+
+
 }
