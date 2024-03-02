@@ -39,8 +39,8 @@ public class MineSweeper
 
         var result = new List<Vector2Int>();
         
-        for (var i = x - 1; i < x + 1; i++) {
-            for (var j = y - 1; j < y + 1; j++) {
+        for (var i = x - 1; i <= x + 1; i++) {
+            for (var j = y - 1; j <= y + 1; j++) {
                 if(i < 0 || j < 0) 
                     continue;
                 if(i == x && j == y)
