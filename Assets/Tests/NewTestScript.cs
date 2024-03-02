@@ -48,7 +48,21 @@ public class NewTestScript
     {
         var sut = new MineSweeper(new Vector2Int(2, 2));
         Assert.AreEqual(
-            new List<Vector2Int> { new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1) },
+            new List<Vector2Int> { new(1, 0), new(1, 1), new(0, 1) },
             sut.AdjacentOf(0, 0));
+    }
+
+    [Test]
+    public void aspdrfuke() {
+        var sut = new MineSweeper(new Vector2Int(1, 1));
+        
+        Assert.AreEqual(
+            new List<Vector2Int> {
+                new(0, 0), new(0, 1), new(0, 2), 
+                new(1, 0), new(1, 2), new(2, 0),
+                new(2, 1), new(2, 2)
+            },
+            sut.AdjacentOf(1, 1)
+        );
     }
 }

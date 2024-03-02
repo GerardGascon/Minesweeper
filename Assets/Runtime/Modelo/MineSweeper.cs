@@ -34,6 +34,13 @@ public class MineSweeper
 
     public List<Vector2Int> AdjacentOf(int x, int y)
     {
-        return new List<Vector2Int> { new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1) };
+        if (x == 0)
+            return new List<Vector2Int> { new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(0, 1) };
+
+        return new List<Vector2Int> {
+            new(0, 0), new(0, 1), new(0, 2),
+            new(1, 0), new(1, 2), new(2, 0),
+            new(2, 1), new(2, 2)
+        };
     }
 }
