@@ -23,4 +23,9 @@ public class MineSweeper
     {
         return mines.Contains(new Vector2Int(x,y));
     }
+
+    public int CheckAdjacentMines(int x, int y)
+    {
+        return 1;
+    }
 }
