@@ -71,18 +71,18 @@ public class NewTestScript
         Assert.AreEqual(2, sut.CheckAdjacentMines(0, 1));
     }
     [Test]
-    public void sadpaspsd() {
+    public void NotFlaggedByDefault() {
         var sut = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0,0));
         Assert.IsFalse(sut.IsFlagged(0, 0));
     }
     [Test]
-    public void fpdqweier() {
+    public void CellIsFlagged() {
         var sut = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0, 0));
         sut.Flag(0, 1);
         Assert.IsTrue(sut.IsFlagged(0, 1));
     }
     [Test]
-    public void asdadsq312()
+    public void NoFlagAfterUnflag()
     {
         var sut = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0, 0));
         sut.Flag(0, 0);
@@ -90,40 +90,44 @@ public class NewTestScript
         Assert.IsFalse(sut.IsFlagged(0, 0));
     }
     [Test]
-    public void iasdjsadjo()
+    public void NotLostByDefault()
     {
         var sut = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0, 0));
         Assert.IsFalse(sut.HaveWeLost());
     }
     [Test]
-    public void adssdadas()
+    public void Lose_IfMineRevealed()
     {
         var sut = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0, 0));
         sut.Reveal(0,0);
         Assert.IsTrue(sut.HaveWeLost());
     }
     [Test]
-    public void asdassasdds()
+    public void NotLose_IfEmptyCellRevealed()
     {
         var sut = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0, 0));
         sut.Reveal(0, 1);
         Assert.IsFalse(sut.HaveWeLost());
     }
     [Test]
-    public void dfgdfgdfg()
+    public void NotWin_IfNoCellsRevealed()
     {
         var sut = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0, 0));
         Assert.IsFalse(sut.HaveWeWon());
     }
     [Test]
-    public void kjkkjkp()
+    public void Win_IfEmptyCellsRevealed()
+    {
+        var sut = new MineSweeper(new Vector2Int(2, 1), new Vector2Int(0, 0));
+        sut.Reveal(1, 0);
+        Assert.IsTrue(sut.HaveWeWon());
+    }
+    
+    [Test]
+    public void NotWin_IfNotAllEmptyCellsRevealed()
     {
         var sut = new MineSweeper(new Vector2Int(2, 2), new Vector2Int(0, 0));
         sut.Reveal(1, 0);
-        sut.Reveal(1, 1);
-        sut.Reveal(0, 1);
-        Assert.IsTrue(sut.HaveWeWon());
+        Assert.IsFalse(sut.HaveWeWon());
     }
-
-
 }

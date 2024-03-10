@@ -68,8 +68,10 @@ public class MineSweeper {
 		return mines.Intersect(cellsRevealed).Any();
     }
 
-    public bool HaveWeWon()
-    {
-		return false;
+    public bool HaveWeWon() {
+	    int cells = size.x * size.y;
+	    int unrevealedCells = cells - cellsRevealed.Count;
+	    
+		return unrevealedCells == mines.Count;
     }
 }
