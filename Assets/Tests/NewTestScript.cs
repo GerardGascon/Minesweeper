@@ -70,6 +70,10 @@ public class NewTestScript
         var sut = new MineSweeper(new List<Vector2Int>{ new Vector2Int(0, 0), new Vector2Int(0, 2) });
         Assert.AreEqual(2, sut.CheckAdjacentMines(0, 1));
     }
-
+    [Test]
+    public void sadpaspsd() {
+        var sut = new MineSweeper(new Vector2Int(0,0));
+        Assert.IsFalse(sut.ThereIsAnyCellMarked());
+    }
 
 }

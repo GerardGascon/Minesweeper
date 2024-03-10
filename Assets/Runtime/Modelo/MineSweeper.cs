@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MineSweeper {
 	private List<Vector2Int> cellsRevealed = new();
+	private List<Vector2Int> cellsMarked = new();
 	private List<Vector2Int> mines = new();
 
 	public MineSweeper(Vector2Int Mina) => mines.Add(Mina);
@@ -35,4 +36,13 @@ public class MineSweeper {
 
 		return result;
 	}
+	public bool isMarked(int x, int y)
+	{
+		return cellsMarked.Contains(new Vector2Int(x, y));
+	}
+
+    public bool ThereIsAnyCellMarked()
+    {
+		return false;
+    }
 }
