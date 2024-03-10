@@ -75,13 +75,27 @@ public class NewTestScript
         var sut = new MineSweeper(new Vector2Int(0,0));
         Assert.IsFalse(sut.IsFlagged(0, 0));
     }
-
     [Test]
     public void fpdqweier() {
         var sut = new MineSweeper(new Vector2Int(0, 0));
-        sut.Flag(0, 0);
         sut.Flag(0, 1);
         Assert.IsTrue(sut.IsFlagged(0, 1));
     }
-
+    [Test]
+    public void asdadsq312()
+    {
+        var sut = new MineSweeper(new Vector2Int(0, 0));
+        sut.Flag(0, 0);
+        sut.Unflag(0, 0);
+        Assert.IsFalse(sut.IsFlagged(0, 0));
+    }
+    [Test]
+    public void fhgfhgfh65()
+    {
+        var sut = new MineSweeper(new Vector2Int(0, 0));
+        sut.Flag(0, 0);
+        sut.Flag(0, 0);
+        sut.Unflag(0, 0);
+        Assert.IsFalse(sut.IsFlagged(0, 0));
+    }
 }

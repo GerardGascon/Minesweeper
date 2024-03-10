@@ -44,4 +44,9 @@ public class MineSweeper {
     public bool IsFlagged(int x, int y) {
 	    return flags.Contains(new Vector2Int(x, y));
     }
+
+    public void Unflag(int x, int y)
+    {
+		flags.Remove(new Vector2Int(x, y));
+    }
 }
