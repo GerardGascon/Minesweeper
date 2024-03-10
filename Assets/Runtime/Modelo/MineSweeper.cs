@@ -9,12 +9,16 @@ public class MineSweeper {
 	private List<Vector2Int> flags = new();
 	private List<Vector2Int> mines = new();
 
-	public MineSweeper(Vector2Int Mina) => mines.Add(Mina);
+    public MineSweeper(Vector2Int Mina) => mines.Add(Mina);
 
 	public MineSweeper(List<Vector2Int> minas) => mines.AddRange(minas);
 
-	public void Reveal(int x, int y) => cellsRevealed.Add(new Vector2Int(x, y));
-	public bool IsRevealed(int x, int y) => cellsRevealed.Contains(new Vector2Int(x, y));
+    public void Reveal(int x, int y)
+    {
+        cellsRevealed.Add(new Vector2Int(x, y));
+    }
+
+    public bool IsRevealed(int x, int y) => cellsRevealed.Contains(new Vector2Int(x, y));
 
 	public bool HasMineIn(int x, int y) => mines.Contains(new Vector2Int(x, y));
 
@@ -48,5 +52,10 @@ public class MineSweeper {
     public void Unflag(int x, int y)
     {
 		flags.Remove(new Vector2Int(x, y));
+    }
+
+    public bool HaveWeLost()
+    {
+		return mines.Intersect(cellsRevealed).Any();
     }
 }

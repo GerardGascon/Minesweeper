@@ -89,5 +89,24 @@ public class NewTestScript
         sut.Unflag(0, 0);
         Assert.IsFalse(sut.IsFlagged(0, 0));
     }
-
+    [Test]
+    public void iasdjsadjo()
+    {
+        var sut = new MineSweeper(new Vector2Int(0, 0));
+        Assert.IsFalse(sut.HaveWeLost());
+    }
+    [Test]
+    public void adssdadas()
+    {
+        var sut = new MineSweeper(new Vector2Int(0, 0));
+        sut.Reveal(0,0);
+        Assert.IsTrue(sut.HaveWeLost());
+    }
+    [Test]
+    public void asdassasdds()
+    {
+        var sut = new MineSweeper(new Vector2Int(0, 0));
+        sut.Reveal(0, 1);
+        Assert.IsFalse(sut.HaveWeLost());
+    }
 }
