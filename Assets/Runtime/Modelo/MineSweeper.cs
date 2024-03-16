@@ -10,19 +10,14 @@ public class MineSweeper {
 	private List<Vector2Int> mines = new();
 	private Vector2Int size;
 
-    public MineSweeper(Vector2Int size, Vector2Int Mina)
-    {
-        if (size.x < 1 || size.y < 1)
-            throw new ArgumentException("El tamaño del tablero no puede menor a 2x2");
-
-
-		this.size = size;
-		mines.Add(Mina);
-    }
+    public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size,new List<Vector2Int> { Mina}) { }
 
     public MineSweeper(Vector2Int size, List<Vector2Int> minas)
     {
-		this.size = size;
+        if (size.x < 1 || size.y < 1)
+            throw new ArgumentException("El tamaño del tablero no puede menor a 1x1");
+
+        this.size = size;
         mines.AddRange(minas);
     }
 
