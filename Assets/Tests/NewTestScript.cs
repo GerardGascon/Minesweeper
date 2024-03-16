@@ -130,4 +130,14 @@ public class NewTestScript
         sut.Reveal(1, 0);
         Assert.IsFalse(sut.HaveWeWon());
     }
+
+    [Test]
+    public void asadfsadfasdf()
+    {
+        var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(4, 4));
+        sut.Reveal(0, 0);
+        Assert.IsTrue(sut.IsRevealed(0, 1));
+    }
+
+    //Si revelamos una casilla sin mina y sin minas alrededor, se revelan las casillas adyacentes hasta encontrar una casilla con mina adyacente
 }
