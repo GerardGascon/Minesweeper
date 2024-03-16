@@ -14,11 +14,22 @@ public class MineSweeper {
 
     public MineSweeper(Vector2Int size, List<Vector2Int> minas)
     {
-        if (size.x < 1 || size.y < 1)
-            throw new ArgumentException("El tamaño del tablero no puede menor a 1x1");
+        if (!HasMinSize(ref size))
+            throw new ArgumentException("El tamaño del tablero es menor al minimo");
+        if (minas.Distinct().Count() != minas.Count())
+            throw new ArgumentException("Minas duplicadas");
+        if (minas.Count() >= (size.x * size.y))
+            throw new ArgumentException("Demasiadas minas");
+        if(minas.Count()<1)
+            throw new ArgumentException("No hay minas");
 
         this.size = size;
         mines.AddRange(minas);
+
+        static bool HasMinSize(ref Vector2Int size)
+        {
+            return size.x >= 1 && size.y >= 1;
+        }
     }
 
     public void Reveal(int x, int y)
