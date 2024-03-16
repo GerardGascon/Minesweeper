@@ -12,6 +12,10 @@ public class MineSweeper {
 
     public MineSweeper(Vector2Int size, Vector2Int Mina)
     {
+        if (size.x < 1 || size.y < 1)
+            throw new ArgumentException("El tamaño del tablero no puede menor a 2x2");
+
+
 		this.size = size;
 		mines.Add(Mina);
     }
@@ -24,7 +28,9 @@ public class MineSweeper {
 
     public void Reveal(int x, int y)
     {
-		if (CellOutOfBounds(x,y))
+        if (GameOver())
+            throw new InvalidOperationException("La partida ha terminado");
+        if (CellOutOfBounds(x,y))
 			throw new ArgumentOutOfRangeException("Posición a revelar está fuera de los margenes");
 		if (IsRevealed(x, y))
 			throw new InvalidOperationException("La casilla ya está revelada");
@@ -61,10 +67,13 @@ public class MineSweeper {
 
 	public void Flag(int x, int y)
     {
+        if (GameOver())
+            throw new InvalidOperationException("La partida ha terminado");
         if (CellOutOfBounds(x, y))
             throw new InvalidOperationException("Posición a marcar está fuera de los margenes");
         if (IsFlagged(x, y))
             throw new InvalidOperationException("La casilla ya está marcada");
+
         flags.Add(new Vector2Int(x, y));
     }
 
@@ -79,11 +88,19 @@ public class MineSweeper {
 
     public void Unflag(int x, int y)
     {
+        if(GameOver())
+            throw new InvalidOperationException("La partida ha terminado");
         if (CellOutOfBounds(x, y))
             throw new InvalidOperationException("Posición a desmarcar está fuera de los margenes");
         if (!IsFlagged(x, y))
             throw new InvalidOperationException("La casilla no está marcada");
+
         flags.Remove(new Vector2Int(x, y));
+    }
+
+    public bool GameOver()
+    {
+        return HaveWeLost() || HaveWeWon();
     }
 
     public bool HaveWeLost()
