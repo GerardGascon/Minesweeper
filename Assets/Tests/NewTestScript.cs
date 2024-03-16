@@ -132,19 +132,34 @@ public class NewTestScript
     }
 
     [Test]
-    public void asadfsadfasdf()
+    public void CascadeReveal()
     {
         var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(4, 4));
         sut.Reveal(0, 0);
         Assert.IsTrue(sut.IsRevealed(0, 1));
     }
     [Test]
-    public void asadfsadfasasdsadf()
+    public void CascadeDoNotStart()
     {
         var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(0, 1));
         sut.Reveal(0, 0);
         Assert.IsFalse(sut.IsRevealed(1, 0));
     }
+    [Test]
+    public void CascadeRevealStops()
+    {
+        var sut = new MineSweeper(new Vector2Int(3, 3), new Vector2Int(2, 2));
+        sut.Reveal(0, 0);
+        Assert.IsFalse(sut.IsRevealed(3, 3));
+    }
+    [Test]
+    public void WonAfterCascadeReveal()
+    {
+        var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(4, 4));
+        sut.Reveal(0, 0);
+        Assert.IsTrue(sut.HaveWeWon());
+    }
+
 
     //Si revelamos una casilla sin mina y sin minas alrededor, se revelan las casillas adyacentes hasta encontrar una casilla con mina adyacente
 }
