@@ -39,16 +39,20 @@ public class MineSweeper {
 	public int CheckAdjacentMines(int x, int y) => AdjacentOf(x, y).Count(cell => HasMineIn(cell.x, cell.y));
 
 	public List<Vector2Int> AdjacentOf(int x, int y) {
-		var result = new List<Vector2Int>();
+        if (CellOutOfBounds(x, y))
+            throw new InvalidOperationException("Posición a marcar está fuera de los margenes");
+        var result = new List<Vector2Int>();
 
 		for (var i = x - 1; i <= x + 1; i++) {
 			for (var j = y - 1; j <= y + 1; j++) {
-				if (i < 0 || j < 0)
-					continue;
-				if (i == x && j == y)
+                if (CellOutOfBounds(i, j))
+                    continue;
+				if (IsItself())
 					continue;
 
-				result.Add(new Vector2Int(i, j));
+                bool IsItself() => i == x && j == y;
+
+                result.Add(new Vector2Int(i, j));
 			}
 		}
 
@@ -76,7 +80,7 @@ public class MineSweeper {
     public void Unflag(int x, int y)
     {
         if (CellOutOfBounds(x, y))
-            throw new InvalidOperationException("Posición a marcar está fuera de los margenes");
+            throw new InvalidOperationException("Posición a desmarcar está fuera de los margenes");
         if (!IsFlagged(x, y))
             throw new InvalidOperationException("La casilla no está marcada");
         flags.Remove(new Vector2Int(x, y));
