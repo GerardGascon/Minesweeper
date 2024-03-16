@@ -14,7 +14,7 @@ public class ioasjdasoi : MonoBehaviour
     MineSweeper sweeper;
     private void Start()
     {
-        sweeper = new MineSweeper(new Vector2Int(5,5),new Vector2Int(0,0));
+        sweeper = new MineSweeper(new Vector2Int(10,10),new Vector2Int(0,0));
         reveal.onClick.AddListener(RevealCell);
     }
     private void Update()

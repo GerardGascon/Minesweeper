@@ -155,11 +155,17 @@ public class NewTestScript
     [Test]
     public void WonAfterCascadeReveal()
     {
-        var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(4, 4));
+        var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(3, 3));
         sut.Reveal(0, 0);
         Assert.IsTrue(sut.HaveWeWon());
     }
-
+    [Test]
+    public void asdkfjhaslkdfj()
+    {
+        var sut = new MineSweeper(new Vector2Int(5, 5), new Vector2Int(0, 0));
+        sut.Reveal(2, 2);
+        Assert.IsTrue(sut.IsRevealed(4,3));
+    }
 
     //Si revelamos una casilla sin mina y sin minas alrededor, se revelan las casillas adyacentes hasta encontrar una casilla con mina adyacente
 }
