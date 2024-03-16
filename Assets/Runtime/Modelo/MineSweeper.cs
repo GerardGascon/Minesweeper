@@ -9,6 +9,7 @@ public class MineSweeper {
 	private List<Vector2Int> flags = new();
 	private List<Vector2Int> mines = new();
 	private Vector2Int size;
+    public Vector2Int Size=>size;
 
     public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size,new List<Vector2Int> { Mina}) { }
 
