@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +24,11 @@ public class MineSweeper {
 
     public void Reveal(int x, int y)
     {
+		if (CellOutOfBounds(x,y))
+			throw new ArgumentOutOfRangeException("Posición a revelar está fuera de los margenes");
+		if (IsRevealed(x, y))
+			throw new InvalidOperationException("La casilla ya está revelada");
+
         cellsRevealed.Add(new Vector2Int(x, y));
     }
 
@@ -50,8 +55,18 @@ public class MineSweeper {
 		return result;
 	}
 
-	public void Flag(int x, int y) {
-		flags.Add(new Vector2Int(x, y));
+	public void Flag(int x, int y)
+    {
+        if (CellOutOfBounds(x, y))
+            throw new InvalidOperationException("Posición a marcar está fuera de los margenes");
+        if (IsFlagged(x, y))
+            throw new InvalidOperationException("La casilla ya está marcada");
+        flags.Add(new Vector2Int(x, y));
+    }
+
+    private bool CellOutOfBounds(int x, int y)
+    {
+        return x > size.x || y > size.y || x < 0 || y < 0;
     }
 
     public bool IsFlagged(int x, int y) {
@@ -60,7 +75,11 @@ public class MineSweeper {
 
     public void Unflag(int x, int y)
     {
-		flags.Remove(new Vector2Int(x, y));
+        if (CellOutOfBounds(x, y))
+            throw new InvalidOperationException("Posición a marcar está fuera de los margenes");
+        if (!IsFlagged(x, y))
+            throw new InvalidOperationException("La casilla no está marcada");
+        flags.Remove(new Vector2Int(x, y));
     }
 
     public bool HaveWeLost()
