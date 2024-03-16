@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ioasjdasoi : MonoBehaviour
 {
     [SerializeField]
-    Text screen;
+    Text screenText;
     [SerializeField]
     InputField input;
     [SerializeField]
@@ -20,7 +20,7 @@ public class ioasjdasoi : MonoBehaviour
     private void Update()
     {
         string siadjoas="";
-        for (int i = 0; i < sweeper.Size.x; i++)
+        for (int i = sweeper.Size.x -1; i >= 0; i--)
         {
             for (int j = 0; j < sweeper.Size.y; j++)
             {
@@ -35,8 +35,13 @@ public class ioasjdasoi : MonoBehaviour
                     continue;
                 }
             }
+
+            siadjoas += "\n";
         }
+
+        screenText.text = siadjoas;
     }
+
     private void RevealCell()
     {
         var x = input.text.Split(',')[0];
