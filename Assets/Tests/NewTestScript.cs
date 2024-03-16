@@ -134,7 +134,7 @@ public class NewTestScript
     [Test]
     public void CascadeReveal()
     {
-        var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(4, 4));
+        var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(3, 3));
         sut.Reveal(0, 0);
         Assert.IsTrue(sut.IsRevealed(0, 1));
     }
@@ -148,7 +148,7 @@ public class NewTestScript
     [Test]
     public void CascadeRevealStops()
     {
-        var sut = new MineSweeper(new Vector2Int(3, 3), new Vector2Int(2, 2));
+        var sut = new MineSweeper(new Vector2Int(4, 4), new Vector2Int(2, 2));
         sut.Reveal(0, 0);
         Assert.IsFalse(sut.IsRevealed(3, 3));
     }

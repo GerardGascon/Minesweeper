@@ -37,8 +37,8 @@ public class MineSweeper {
     {
         if (IsRevealed(x, y))
             throw new InvalidOperationException("La casilla ya está revelada");
-        //if (GameOver())
-        //    throw new InvalidOperationException("La partida ha terminado");
+        if (GameOver())
+            throw new InvalidOperationException("La partida ha terminado");
         if (CellOutOfBounds(x,y))
 			throw new ArgumentOutOfRangeException("Posición a revelar está fuera de los margenes");
 		
@@ -49,21 +49,25 @@ public class MineSweeper {
 
     private void CheckCascadeReveal(int x, int y)
     {
-        if(CheckAdjacentMines(x, y) == 0)
-        {
-            List<Vector2Int> adjacentCells = AdjacentOf(x, y);
+        if (CheckAdjacentMines(x, y) != 0)
+            return;
+        if (HasMineIn(x, y))
+            return;
+            
+        List<Vector2Int> adjacentCells = AdjacentOf(x, y);
 
             foreach (Vector2Int c in adjacentCells)
             {
-                if(!IsRevealed(c.x, c.y) /*&& !GameOver()*/)
+                if(!IsRevealed(c.x, c.y))
                     Reveal(c.x, c.y);
             }
-        }
+
     }
 
     public bool IsRevealed(int x, int y)
     {
-
+        if (CellOutOfBounds(x, y))
+            throw new ArgumentException("This cell is out of bounds");
         return cellsRevealed.Contains(new Vector2Int(x, y));
     }
 
