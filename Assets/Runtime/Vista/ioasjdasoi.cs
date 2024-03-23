@@ -5,40 +5,43 @@ using UnityEngine.UI;
 
 public class ioasjdasoi : MonoBehaviour, View
 {
-    [SerializeField]
-    Text screenText;
-    [SerializeField]
-    InputField input;
-    [SerializeField]
-    Button reveal;
-    [SerializeField]
-    Button flag;
-    [SerializeField]
-    Text endScreen;
+    [SerializeField] Text screenText;
+    [SerializeField] Text endScreen;
+
+    [SerializeField] InputField input;
+
+    [SerializeField] Button reveal;
+    [SerializeField] Button flag;
+
     MineSweeper sweeper;
+
     RevealCell _revealCell;
     ToggleFlag _toggleFlag;
-    private void Start()
+    GameEnd _gameEnd;
+
+    void Start()
     {
         sweeper = new MineSweeper(new Vector2Int(10,10),new Vector2Int(0,0));
         _revealCell = new RevealCell(this, sweeper);
         _toggleFlag = new ToggleFlag(this, sweeper);
+        _gameEnd = new GameEnd(this, sweeper);
         reveal.onClick.AddListener(RevealCell);
         flag.onClick.AddListener(FlagCell);
         UpdateCell();
     }
 
-    private void FlagCell() {
+    void FlagCell() {
         var x = input.text.Split(',')[0];
         var y = input.text.Split(',')[1];
         _toggleFlag.Execute(int.Parse(x), int.Parse(y));
     }
 
-    private void RevealCell()
+    void RevealCell()
     {
         var x = input.text.Split(',')[0];
         var y = input.text.Split(',')[1];
         _revealCell.Reveal(int.Parse(x), int.Parse(y));
+        _gameEnd.CheckGameEnd();
     }
 
     public void UpdateCell()
