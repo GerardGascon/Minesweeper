@@ -13,6 +13,8 @@ public class ioasjdasoi : MonoBehaviour, View
     Button reveal;
     [SerializeField]
     Button flag;
+    [SerializeField]
+    Text endScreen;
     MineSweeper sweeper;
     RevealCell _revealCell;
     ToggleFlag _toggleFlag;
@@ -67,5 +69,11 @@ public class ioasjdasoi : MonoBehaviour, View
         }
 
         screenText.text = siadjoas;
+    }
+
+    public void GameEnd(string text)
+    {
+        endScreen.gameObject.SetActive(true);
+        endScreen.text = text;
     }
 }

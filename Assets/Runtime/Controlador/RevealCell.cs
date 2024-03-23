@@ -21,5 +21,6 @@ public class RevealCell
 }
 public interface View {
     void UpdateCell();
+    void GameEnd(string text);
 }
 
