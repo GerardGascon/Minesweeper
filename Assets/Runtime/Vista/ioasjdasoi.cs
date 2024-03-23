@@ -12,17 +12,20 @@ public class ioasjdasoi : MonoBehaviour, View
     [SerializeField]
     Button reveal;
     MineSweeper sweeper;
+    RevealCell _revealCell;
     private void Start()
     {
         sweeper = new MineSweeper(new Vector2Int(10,10),new Vector2Int(0,0));
+        _revealCell = new RevealCell(this, sweeper);
         reveal.onClick.AddListener(RevealCell);
+        UpdateCell();
     }
 
     private void RevealCell()
     {
         var x = input.text.Split(',')[0];
         var y = input.text.Split(',')[1];
-        sweeper.Reveal(int.Parse(x), int.Parse(y));
+        _revealCell.Reveal(int.Parse(x), int.Parse(y));
     }
 
     public void UpdateCell()
