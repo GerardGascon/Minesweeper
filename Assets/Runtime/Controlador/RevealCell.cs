@@ -14,6 +14,7 @@ public class RevealCell
     public void Reveal(int x,int y)
     {
         sweeper.Reveal(x,y);
+        vista.UpdateCell();
     }
 }
 public interface View {

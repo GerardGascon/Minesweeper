@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ioasjdasoi : MonoBehaviour
+public class ioasjdasoi : MonoBehaviour, View
 {
     [SerializeField]
     Text screenText;
@@ -17,16 +17,24 @@ public class ioasjdasoi : MonoBehaviour
         sweeper = new MineSweeper(new Vector2Int(10,10),new Vector2Int(0,0));
         reveal.onClick.AddListener(RevealCell);
     }
-    private void Update()
+
+    private void RevealCell()
     {
-        string siadjoas="";
-        for (int i = sweeper.Size.x -1; i >= 0; i--)
+        var x = input.text.Split(',')[0];
+        var y = input.text.Split(',')[1];
+        sweeper.Reveal(int.Parse(x), int.Parse(y));
+    }
+
+    public void UpdateCell()
+    {
+        string siadjoas = "";
+        for (int i = sweeper.Size.x - 1; i >= 0; i--)
         {
             for (int j = 0; j < sweeper.Size.y; j++)
             {
-                if (!sweeper.IsRevealed(i,j))
+                if (!sweeper.IsRevealed(i, j))
                 {
-                    siadjoas+="x";
+                    siadjoas += "x";
                     continue;
                 }
                 else
@@ -40,12 +48,5 @@ public class ioasjdasoi : MonoBehaviour
         }
 
         screenText.text = siadjoas;
-    }
-
-    private void RevealCell()
-    {
-        var x = input.text.Split(',')[0];
-        var y = input.text.Split(',')[1];
-        sweeper.Reveal(int.Parse(x), int.Parse(y));
     }
 }

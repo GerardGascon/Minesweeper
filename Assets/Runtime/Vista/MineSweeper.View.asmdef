@@ -2,7 +2,8 @@
     "name": "MineSweeper.View",
     "rootNamespace": "",
     "references": [
-        "Minesweeper.Domain"
+        "Minesweeper.Domain",
+        "Controlador"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
