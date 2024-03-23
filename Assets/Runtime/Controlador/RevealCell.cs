@@ -26,6 +26,13 @@ public class RevealCell
         sweeper.Flag(x, y);
         vista.UpdateCell();
     }
+
+    public void Unflag(int x, int y) {
+        if(!sweeper.IsFlagged(x, y))
+            return;
+        sweeper.Unflag(x, y);
+        vista.UpdateCell();
+    }
 }
 public interface View {
     void UpdateCell();

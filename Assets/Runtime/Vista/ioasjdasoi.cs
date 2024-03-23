@@ -20,7 +20,14 @@ public class ioasjdasoi : MonoBehaviour, View
         sweeper = new MineSweeper(new Vector2Int(10,10),new Vector2Int(0,0));
         _revealCell = new RevealCell(this, sweeper);
         reveal.onClick.AddListener(RevealCell);
+        flag.onClick.AddListener(FlagCell);
         UpdateCell();
+    }
+
+    private void FlagCell() {
+        var x = input.text.Split(',')[0];
+        var y = input.text.Split(',')[1];
+        _revealCell.Flag(int.Parse(x), int.Parse(y));
     }
 
     private void RevealCell()
@@ -41,7 +48,7 @@ public class ioasjdasoi : MonoBehaviour, View
                 {
                     if (sweeper.IsFlagged(i, j))
                     {
-                        siadjoas += "ñ";
+                        siadjoas += "A";
                         continue;
                     }
                     siadjoas += "x";
