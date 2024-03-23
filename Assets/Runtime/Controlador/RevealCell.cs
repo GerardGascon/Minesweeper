@@ -13,6 +13,8 @@ public class RevealCell
     }
     public void Reveal(int x,int y)
     {
+        if (!sweeper.CanBeRevealed(x,y))
+            return;
         sweeper.Reveal(x,y);
         vista.UpdateCell();
     }

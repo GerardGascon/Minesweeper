@@ -46,6 +46,10 @@ public class MineSweeper {
 
         CheckCascadeReveal(x, y);
     }
+    public bool CanBeRevealed(int x,int y)
+    {
+        return !IsRevealed(x, y) && !GameOver() && !CellOutOfBounds(x, y);
+    }
 
     private void CheckCascadeReveal(int x, int y)
     {
@@ -67,7 +71,7 @@ public class MineSweeper {
     public bool IsRevealed(int x, int y)
     {
         if (CellOutOfBounds(x, y))
-            throw new ArgumentException("This cell is out of bounds");
+            throw new ArgumentException("This cell is out of bounds"+x+","+y);
         return cellsRevealed.Contains(new Vector2Int(x, y));
     }
 
