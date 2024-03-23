@@ -11,6 +11,8 @@ public class ioasjdasoi : MonoBehaviour, View
     InputField input;
     [SerializeField]
     Button reveal;
+    [SerializeField]
+    Button flag;
     MineSweeper sweeper;
     RevealCell _revealCell;
     private void Start()
@@ -37,6 +39,11 @@ public class ioasjdasoi : MonoBehaviour, View
             {
                 if (!sweeper.IsRevealed(i, j))
                 {
+                    if (sweeper.IsFlagged(i, j))
+                    {
+                        siadjoas += "ñ";
+                        continue;
+                    }
                     siadjoas += "x";
                     continue;
                 }

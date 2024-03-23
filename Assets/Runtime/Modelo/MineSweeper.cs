@@ -112,6 +112,11 @@ public class MineSweeper {
         flags.Add(new Vector2Int(x, y));
     }
 
+    public bool CanBeFlagged(int x, int y)
+    {
+        return !IsFlagged(x, y) && !GameOver() && !CellOutOfBounds(x, y);
+    }
+
     private bool CellOutOfBounds(int x, int y)
     {
         return x >= size.x || y >= size.y || x < 0 || y < 0;
