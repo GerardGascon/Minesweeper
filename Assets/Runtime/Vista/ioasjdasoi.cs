@@ -15,10 +15,12 @@ public class ioasjdasoi : MonoBehaviour, View
     Button flag;
     MineSweeper sweeper;
     RevealCell _revealCell;
+    ToggleFlag _toggleFlag;
     private void Start()
     {
         sweeper = new MineSweeper(new Vector2Int(10,10),new Vector2Int(0,0));
         _revealCell = new RevealCell(this, sweeper);
+        _toggleFlag = new ToggleFlag(this, sweeper);
         reveal.onClick.AddListener(RevealCell);
         flag.onClick.AddListener(FlagCell);
         UpdateCell();
@@ -27,7 +29,7 @@ public class ioasjdasoi : MonoBehaviour, View
     private void FlagCell() {
         var x = input.text.Split(',')[0];
         var y = input.text.Split(',')[1];
-        _revealCell.Flag(int.Parse(x), int.Parse(y));
+        _toggleFlag.Execute(int.Parse(x), int.Parse(y));
     }
 
     private void RevealCell()
