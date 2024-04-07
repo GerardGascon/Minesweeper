@@ -4,34 +4,30 @@ using UnityEngine;
 
 public class sladkfjñlasdf : MonoBehaviour
 {
-    [SerializeField] private GameObject defaultCellPrefab;
-    [SerializeField] private GameObject emptyCellPrefab;
-    [SerializeField] private GameObject mineCellPrefab;
-   
+    [SerializeField] private Transform board;
+    [SerializeField] private GameObject cellPrefab;
+    MineSweeper sweeper;
 
-    public void UpdateCell(MineSweeper sweeper)
+    private void Start()
     {
-        string siadjoas = "";
+        sweeper = new MineSweeper(new Vector2Int(10, 10), new Vector2Int(0, 0));
+        PrepareBoard(sweeper);
+    }
+
+    public void PrepareBoard(MineSweeper sweeper)
+    {
         for (int i = sweeper.Size.x - 1; i >= 0; i--)
         {
             for (int j = 0; j < sweeper.Size.y; j++)
-                siadjoas += ObtainCellValue(sweeper, i, j);
-
-            siadjoas += "\n";
+                InstantateCell(i, j);
         }
-
-        //screenText.text = siadjoas;
     }
 
-    private string ObtainCellValue(MineSweeper sweeper, int i, int j)
+    private void InstantateCell(int i, int j)
     {
-        if (!sweeper.IsRevealed(i, j))
-        {
-            if (sweeper.IsFlagged(i, j))
-                return "A";
-            return "x";
-        }
-
-        return "o";
+        GameObject newCell = Instantiate(cellPrefab, Vector2.zero, Quaternion.identity);
+        newCell.transform.SetParent(board);
+        newCell.GetComponent<Cell>().SetCellPosition(i, j);
     }
+
 }
