@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class sladkfjñlasdf : MonoBehaviour
 {
-    [SerializeField] private GameObject CellPrefab;
+    [SerializeField] private GameObject defaultCellPrefab;
+    [SerializeField] private GameObject emptyCellPrefab;
+    [SerializeField] private GameObject mineCellPrefab;
    
 
     public void UpdateCell(MineSweeper sweeper)

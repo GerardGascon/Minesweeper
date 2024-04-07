@@ -50,28 +50,29 @@ public class ioasjdasoi : MonoBehaviour, View
         for (int i = sweeper.Size.x - 1; i >= 0; i--)
         {
             for (int j = 0; j < sweeper.Size.y; j++)
-            {
-                if (!sweeper.IsRevealed(i, j))
-                {
-                    if (sweeper.IsFlagged(i, j))
-                    {
-                        siadjoas += "A";
-                        continue;
-                    }
-                    siadjoas += "x";
-                    continue;
-                }
-                else
-                {
-                    siadjoas += "o";
-                    continue;
-                }
-            }
+                siadjoas += CharacterAt(i, j);
 
             siadjoas += "\n";
         }
 
         screenText.text = siadjoas;
+    }
+
+    private string CharacterAt(int i, int j)
+    {
+        if (!sweeper.IsRevealed(i, j))
+        {
+            if (sweeper.IsFlagged(i, j))
+                return "A";
+            return "x";
+        }
+        else
+        {
+            if (sweeper.HasMineIn(i, j))
+                return "*";
+            else
+                return sweeper.CheckAdjacentMines(i,j).ToString();
+        }
     }
 
     public void GameEnd(string text)
