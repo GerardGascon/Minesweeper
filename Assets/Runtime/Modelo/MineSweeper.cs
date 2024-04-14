@@ -57,15 +57,14 @@ public class MineSweeper {
             return;
         if (HasMineIn(x, y))
             return;
-            
+
         List<Vector2Int> adjacentCells = AdjacentOf(x, y);
 
-            foreach (Vector2Int c in adjacentCells)
-            {
-                if(!IsRevealed(c.x, c.y))
-                    Reveal(c.x, c.y);
-            }
-
+        foreach (Vector2Int c in adjacentCells)
+        {
+            if (!IsRevealed(c.x, c.y))
+                Reveal(c.x, c.y);
+        }
     }
 
     public bool IsRevealed(int x, int y)

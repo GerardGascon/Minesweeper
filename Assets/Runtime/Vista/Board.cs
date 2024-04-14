@@ -38,9 +38,10 @@ public class Board : MonoBehaviour, View
         cellMatrix[i, j] = newCell.GetComponent<Cell>();
     }
 
-    public void UpdateCell(int x, int y)
+    public void UpdateBoard()
     {
-        cellMatrix[x,y].Configure(sweeper, x, y);
+        foreach (Cell c in cellMatrix)
+            c.Configure(sweeper, c.cellPosition.x, c.cellPosition.y);
     }
 
     public void GameEnd(string text)
