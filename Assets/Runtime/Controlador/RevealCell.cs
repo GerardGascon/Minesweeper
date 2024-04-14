@@ -17,11 +17,11 @@ public class RevealCell
         if (!sweeper.CanBeRevealed(x,y))
             return;
         sweeper.Reveal(x,y);
-        vista.UpdateCell();
+        vista.UpdateCell(sweeper);
     }
 }
 public interface View {
-    void UpdateCell();
+    void UpdateCell(MineSweeper sweeper);
     void GameEnd(string text);
 }
 

@@ -27,12 +27,12 @@ public class ToggleFlag
         if (!sweeper.CanBeFlagged(x, y))
             return;
         sweeper.Flag(x, y);
-        vista.UpdateCell();
+        vista.UpdateCell(sweeper);
     }
 
     private void Unflag(int x, int y)
     {
         sweeper.Unflag(x, y);
-        vista.UpdateCell();
+        vista.UpdateCell(sweeper);
     }
 }

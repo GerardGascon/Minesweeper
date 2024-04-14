@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Cell : MonoBehaviour
+public class Cell : MonoBehaviour, View
 {
     [SerializeField] private Text cellText;
     public Vector2Int cellPosition;
     public RevealCell revealCell;
 
+    private void Start()
+    {
+        
+    }
     public void OnClickCell()
     {
         Debug.Log("Me han clicado: (" + cellPosition.x + "-" + cellPosition.y + ")");
@@ -43,5 +47,13 @@ public class Cell : MonoBehaviour
         }
     }
 
-    
+    public void UpdateCell(MineSweeper sweeper)
+    {
+        CharacterAt(sweeper, cellPosition.x, cellPosition.y);
+    }
+
+    public void GameEnd(string text)
+    {
+        
+    }
 }

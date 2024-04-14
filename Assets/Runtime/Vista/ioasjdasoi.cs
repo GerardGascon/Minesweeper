@@ -80,4 +80,9 @@ public class ioasjdasoi : MonoBehaviour, View
         endScreen.gameObject.SetActive(true);
         endScreen.text = text;
     }
+
+    public void UpdateCell(MineSweeper sweeper)
+    {
+        throw new System.NotImplementedException();
+    }
 }
