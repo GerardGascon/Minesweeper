@@ -32,10 +32,10 @@ public class Board : MonoBehaviour, View
         newCell.transform.SetParent(board);
         newCell.GetComponent<Cell>().SetCellPosition(i, j);
         newCell.GetComponent<Cell>().revealCell = revealCell;
-        
+        newCell.GetComponent<Cell>().Configure(sweeper, i, j);
     }
 
-    public void UpdateCell(MineSweeper sweeper)
+    public void UpdateCell(int x, int y)
     {
         throw new System.NotImplementedException();
     }
