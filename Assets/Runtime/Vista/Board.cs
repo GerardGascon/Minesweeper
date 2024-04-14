@@ -8,12 +8,14 @@ public class Board : MonoBehaviour, View
     [SerializeField] private GameObject cellPrefab;
     MineSweeper sweeper;
     RevealCell revealCell;
+    private Cell[,] cellMatrix;
 
 
     public void Setup(MineSweeper sweeper, RevealCell revealCell)
     {
         this.sweeper = sweeper;
         this.revealCell = revealCell;
+        cellMatrix = new Cell[sweeper.Size.x, sweeper.Size.y];
         PrepareBoard(sweeper);
     }
 
@@ -33,11 +35,12 @@ public class Board : MonoBehaviour, View
         newCell.GetComponent<Cell>().SetCellPosition(i, j);
         newCell.GetComponent<Cell>().revealCell = revealCell;
         newCell.GetComponent<Cell>().Configure(sweeper, i, j);
+        cellMatrix[i, j] = newCell.GetComponent<Cell>();
     }
 
     public void UpdateCell(int x, int y)
     {
-        throw new System.NotImplementedException();
+        cellMatrix[x,y].Configure(sweeper, x, y);
     }
 
     public void GameEnd(string text)
