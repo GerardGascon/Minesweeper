@@ -1,21 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Cell : MonoBehaviour, View
+public class Cell : MonoBehaviour
 {
     [SerializeField] private Text cellText;
     public Vector2Int cellPosition;
     public RevealCell revealCell;
 
-    private void Start()
-    {
-        
-    }
+
     public void OnClickCell()
     {
-        Debug.Log("Me han clicado: (" + cellPosition.x + "-" + cellPosition.y + ")");
-        //Llamar a MineSweeper y decirle que me han clicado y cual es mi posicion
-
         revealCell.Reveal(cellPosition.x, cellPosition.y);
     }
 
@@ -47,13 +41,4 @@ public class Cell : MonoBehaviour, View
         }
     }
 
-    public void UpdateCell(MineSweeper sweeper)
-    {
-        CharacterAt(sweeper, cellPosition.x, cellPosition.y);
-    }
-
-    public void GameEnd(string text)
-    {
-        
-    }
 }
