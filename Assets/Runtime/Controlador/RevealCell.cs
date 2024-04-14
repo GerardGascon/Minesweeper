@@ -6,6 +6,7 @@ public class RevealCell
 {
     private View vista;
     private MineSweeper sweeper;
+
     public RevealCell(View vista, MineSweeper sweeper)
     {
         this.vista = vista;
