@@ -17,7 +17,7 @@ public class RevealCell
         if (!sweeper.CanBeRevealed(x,y))
             return;
         if (sweeper.RevealedCells() == 0)
-            sweeper.ResetMines(x, y);
+            sweeper.ResetMines(new Vector2Int(x, y));
 
         sweeper.Reveal(x,y);
         vista.UpdateBoard();
