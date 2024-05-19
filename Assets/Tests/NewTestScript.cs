@@ -167,5 +167,10 @@ public class NewTestScript
         Assert.IsTrue(sut.IsRevealed(4,3));
     }
 
-    //Si revelamos una casilla sin mina y sin minas alrededor, se revelan las casillas adyacentes hasta encontrar una casilla con mina adyacente
+    [Test]
+    public void CantRevealIfFlagged() {
+        var sut = new MineSweeper(new Vector2Int(5, 5), new Vector2Int(0, 0));
+        sut.Flag(1, 1);
+        Assert.IsFalse(sut.CanBeRevealed(1, 1));
+    }
 }

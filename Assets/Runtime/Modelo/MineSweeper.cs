@@ -48,7 +48,7 @@ public class MineSweeper {
     }
     public bool CanBeRevealed(int x,int y)
     {
-        return !IsRevealed(x, y) && !GameOver() && !CellOutOfBounds(x, y);
+        return !IsRevealed(x, y) && !GameOver() && !CellOutOfBounds(x, y) && !IsFlagged(x, y);
     }
 
     private void CheckCascadeReveal(int x, int y)
