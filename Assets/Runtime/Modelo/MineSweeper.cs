@@ -10,34 +10,40 @@ public class MineSweeper {
 	private List<Vector2Int> mines = new();
 	private Vector2Int size;
     public Vector2Int Size=>size;
+    private int totalMines;
 
 
-    public MineSweeper(Vector2Int size, List<Vector2Int> minas) 
+    public MineSweeper(Vector2Int size, List<Vector2Int> minas) : this (size, minas.Count)
     {
-        if (!HasMinSize(ref size))
-            throw new ArgumentException("El tamaño del tablero es menor al minimo");
         if (minas.Distinct().Count() != minas.Count())
             throw new ArgumentException("Minas duplicadas");
         if (minas.Count() >= (size.x * size.y))
             throw new ArgumentException("Demasiadas minas");
-        if(minas.Count()<1)
+        if (minas.Count() < 1)
             throw new ArgumentException("No hay minas");
 
-        this.size = size;
         mines.AddRange(minas);
+    }
 
+    public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size, new List<Vector2Int> { Mina }) {}
+
+    public MineSweeper(Vector2Int size, int Minas) 
+    {
+        if (!HasMinSize(ref size))
+            throw new ArgumentException("El tamaño del tablero es menor al minimo");
+
+        this.size = size;
+        totalMines = Minas;
+        
         static bool HasMinSize(ref Vector2Int size)
         {
             return size.x >= 1 && size.y >= 1;
         }
     }
 
-    public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size, new List<Vector2Int> { Mina }) { }
-
     public void ResetMines(Vector2Int cell) {
-        int minesNumber = mines.Count;
         mines.Clear();
-        mines.AddRange(CreateRandomMines(size, minesNumber, cell));
+        mines.AddRange(CreateRandomMines(size, totalMines, cell));
     }
 
     public void Reveal(int x, int y)
