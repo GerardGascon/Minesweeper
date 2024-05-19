@@ -34,7 +34,11 @@ public class MineSweeper {
 
     public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size, new List<Vector2Int> { Mina }) { }
 
- 
+    public void ResetMines(int cellX, int cellY) {
+        mines.Clear();
+        mines.AddRange(mines);
+    }
+
     public void Reveal(int x, int y)
     {
         if (IsRevealed(x, y))
@@ -48,6 +52,9 @@ public class MineSweeper {
 
         CheckCascadeReveal(x, y);
     }
+
+    public int RevealedCells() => cellsRevealed.Count;
+
     public bool CanBeRevealed(int x,int y)
     {
         return !IsRevealed(x, y) && !GameOver() && !CellOutOfBounds(x, y) && !IsFlagged(x, y);
