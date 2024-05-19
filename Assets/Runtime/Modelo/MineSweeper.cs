@@ -33,11 +33,26 @@ public class MineSweeper {
         }
     }
 
-    public List<Vector2Int> CreateRandomMines(Vector2Int size, int mines) {
+    public void CreateRandomMines(Vector2Int size, int mines) {
         if (size.x * size.y < mines)
             throw new ArgumentOutOfRangeException("Más minas que casillas");
         if (mines < 1)
             throw new ArgumentOutOfRangeException("No hay minas o son negativas");
+        List<Vector2Int> availableCells = new();
+        for (int i = 0; i < size.x; i++)
+        {
+            for (int j = 0; j < size.y; j++)
+            {
+                availableCells.Add(new Vector2Int(i, j));
+            }
+        }
+
+        for (int i = 0; i < mines; i++)
+        {
+            int randomCell = UnityEngine.Random.Range(0, availableCells.Count);
+            this.mines.Add(availableCells[randomCell]);
+            availableCells.RemoveAt(randomCell);
+        }
     }
 
     public void Reveal(int x, int y)
