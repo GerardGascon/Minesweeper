@@ -11,8 +11,6 @@ public class MineSweeper {
 	private Vector2Int size;
     public Vector2Int Size=>size;
 
-    public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size,new List<Vector2Int> { Mina }) { }
-    public MineSweeper(Vector2Int size, int mines) : this(size, CreateRandomMines(size, mines)) { }
 
     public MineSweeper(Vector2Int size, List<Vector2Int> minas) 
     {
@@ -33,6 +31,9 @@ public class MineSweeper {
             return size.x >= 1 && size.y >= 1;
         }
     }
+
+    public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size, new List<Vector2Int> { Mina }) { }
+    public MineSweeper(Vector2Int size, int mines) : this(size, CreateRandomMines(size, mines)) { }
 
 
     public static List<Vector2Int> CreateRandomMines(Vector2Int size, int mines) {
