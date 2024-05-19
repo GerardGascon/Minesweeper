@@ -11,9 +11,10 @@ public class MineSweeper {
 	private Vector2Int size;
     public Vector2Int Size=>size;
 
-    public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size,new List<Vector2Int> { Mina}) { }
+    public MineSweeper(Vector2Int size, Vector2Int Mina) : this(size,new List<Vector2Int> { Mina }) { }
+    public MineSweeper(Vector2Int size, int mines) : this(size, CreateRandomMines(size, mines)) { }
 
-    public MineSweeper(Vector2Int size, List<Vector2Int> minas)
+    public MineSweeper(Vector2Int size, List<Vector2Int> minas) 
     {
         if (!HasMinSize(ref size))
             throw new ArgumentException("El tamaño del tablero es menor al minimo");
@@ -33,12 +34,16 @@ public class MineSweeper {
         }
     }
 
-    public void CreateRandomMines(Vector2Int size, int mines) {
+
+    public static List<Vector2Int> CreateRandomMines(Vector2Int size, int mines) {
         if (size.x * size.y < mines)
             throw new ArgumentOutOfRangeException("Más minas que casillas");
         if (mines < 1)
             throw new ArgumentOutOfRangeException("No hay minas o son negativas");
+
         List<Vector2Int> availableCells = new();
+        List<Vector2Int> mineList = new();
+
         for (int i = 0; i < size.x; i++)
         {
             for (int j = 0; j < size.y; j++)
@@ -50,9 +55,11 @@ public class MineSweeper {
         for (int i = 0; i < mines; i++)
         {
             int randomCell = UnityEngine.Random.Range(0, availableCells.Count);
-            this.mines.Add(availableCells[randomCell]);
+            mineList.Add(availableCells[randomCell]);
             availableCells.RemoveAt(randomCell);
         }
+
+        return mineList;
     }
 
     public void Reveal(int x, int y)
