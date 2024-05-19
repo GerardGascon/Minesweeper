@@ -166,8 +166,6 @@ public class MineSweeper {
 
     public List<Vector2Int> CreateRandomMines(Vector2Int size, int mines, Vector2Int clickPosition)
     {
-        if (size.x * size.y < mines)
-            throw new ArgumentOutOfRangeException("Más minas que casillas");
         if (mines < 1)
             throw new ArgumentOutOfRangeException("No hay minas o son negativas");
 
@@ -185,7 +183,10 @@ public class MineSweeper {
         List<Vector2Int> unavailableCells = new List<Vector2Int>();
         unavailableCells.Add(clickPosition);
         unavailableCells.AddRange(AdjacentOf(clickPosition.x, clickPosition.y));
-        availableCells = (List<Vector2Int>)availableCells.Except(unavailableCells);
+        availableCells = availableCells.Except(unavailableCells).ToList();
+
+        if (availableCells.Count < mines)
+            throw new ArgumentOutOfRangeException("Más minas que casillas disponibles.");
 
         for (int i = 0; i < mines; i++)
         {
