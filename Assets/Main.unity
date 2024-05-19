@@ -481,6 +481,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de4486d50bc5b5448640dd98ecd44ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: {x: 10, y: 10}
+  mines: 10
 --- !u!1 &1760991087
 GameObject:
   m_ObjectHideFlags: 0
