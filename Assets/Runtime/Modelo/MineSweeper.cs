@@ -33,6 +33,13 @@ public class MineSweeper {
         }
     }
 
+    public List<Vector2Int> CreateRandomMines(Vector2Int size, int mines) {
+        if (size.x * size.y < mines)
+            throw new ArgumentOutOfRangeException("Más minas que casillas");
+        if (mines < 1)
+            throw new ArgumentOutOfRangeException("No hay minas o son negativas");
+    }
+
     public void Reveal(int x, int y)
     {
         if (IsRevealed(x, y))
@@ -153,6 +160,4 @@ public class MineSweeper {
 	    
 		return unrevealedCells == mines.Count;
     }
-
-
 }
