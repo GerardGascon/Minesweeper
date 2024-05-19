@@ -27,8 +27,8 @@ public class Dependencies : MonoBehaviour
         MineSweeper sweeper = new MineSweeper(new Vector2Int(10, 10), minas);
         Board board = FindObjectOfType<Board>();
         RevealCell revealCell = new RevealCell(board, sweeper);
-        board.Setup(sweeper, revealCell);
         ToggleFlag toggleFlag = new ToggleFlag(board, sweeper);
+        board.Setup(sweeper, revealCell, toggleFlag);
         GameEnd gameEnd = new GameEnd(board, sweeper);     
     }
 }

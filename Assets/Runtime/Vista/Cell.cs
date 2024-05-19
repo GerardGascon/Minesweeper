@@ -6,11 +6,22 @@ public class Cell : MonoBehaviour
     [SerializeField] private Text cellText;
     public Vector2Int cellPosition;
     public RevealCell revealCell;
+    public ToggleFlag toggleFlag;
+    private ButtonClick buttonClick;
 
-
-    public void OnClickCell()
+    private void Awake()
+    {
+        buttonClick=GetComponent<ButtonClick>();
+        buttonClick.leftClick += OnLeftClickCell;
+        buttonClick.rightClick += OnRightClickCell;
+    }
+    private void OnLeftClickCell()
     {
         revealCell.Reveal(cellPosition.x, cellPosition.y);
+    }
+    private void OnRightClickCell()
+    {
+        toggleFlag.Execute(cellPosition.x,cellPosition.y);
     }
 
     public void SetCellPosition(int i, int j)

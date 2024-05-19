@@ -8,13 +8,15 @@ public class Board : MonoBehaviour, View
     [SerializeField] private GameObject cellPrefab;
     MineSweeper sweeper;
     RevealCell revealCell;
+    ToggleFlag toggleFlag;
     private Cell[,] cellMatrix;
 
 
-    public void Setup(MineSweeper sweeper, RevealCell revealCell)
+    public void Setup(MineSweeper sweeper, RevealCell revealCell, ToggleFlag toggleFlag)
     {
         this.sweeper = sweeper;
         this.revealCell = revealCell;
+        this.toggleFlag = toggleFlag;
         cellMatrix = new Cell[sweeper.Size.x, sweeper.Size.y];
         PrepareBoard(sweeper);
     }
@@ -34,6 +36,7 @@ public class Board : MonoBehaviour, View
         newCell.transform.SetParent(board);
         newCell.GetComponent<Cell>().SetCellPosition(i, j);
         newCell.GetComponent<Cell>().revealCell = revealCell;
+        newCell.GetComponent<Cell>().toggleFlag = toggleFlag;
         newCell.GetComponent<Cell>().Configure(sweeper, i, j);
         cellMatrix[i, j] = newCell.GetComponent<Cell>();
     }
