@@ -17,4 +17,13 @@ public class DomainTests
         Farm sut = new Farm();
         Assert.IsFalse(sut.IsWet(0, 0));
     }
+
+    [Test]
+    public void CheckTerrainNotWatered()
+    {
+        Farm sut = new Farm();
+        sut.Water(1, 0);
+        Assert.IsFalse(sut.IsWet(0, 0));
+    }
+
 }
