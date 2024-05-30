@@ -7,13 +7,12 @@ public class Cell : MonoBehaviour
     public Vector2Int cellPosition;
     public RevealCell revealCell;
     public ToggleFlag toggleFlag;
-    private ButtonClick buttonClick;
 
     private void Awake()
     {
-        buttonClick=GetComponent<ButtonClick>();
-        buttonClick.leftClick += OnLeftClickCell;
-        buttonClick.rightClick += OnRightClickCell;
+        ButtonClick buttonClick1 = GetComponent<ButtonClick>();
+        buttonClick1.leftClick += OnLeftClickCell;
+        buttonClick1.rightClick += OnRightClickCell;
     }
     private void OnLeftClickCell()
     {
@@ -30,7 +29,7 @@ public class Cell : MonoBehaviour
         cellPosition.y = j;
     }
 
-    public void Configure(MineSweeper sweeper, int i, int j)
+    public void DisplayCharacter(MineSweeper sweeper, int i, int j)
     {
         cellText.text = CharacterAt(sweeper, i, j);
     }

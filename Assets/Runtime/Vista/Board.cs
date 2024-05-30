@@ -37,14 +37,14 @@ public class Board : MonoBehaviour, View
         newCell.GetComponent<Cell>().SetCellPosition(i, j);
         newCell.GetComponent<Cell>().revealCell = revealCell;
         newCell.GetComponent<Cell>().toggleFlag = toggleFlag;
-        newCell.GetComponent<Cell>().Configure(sweeper, i, j);
+        newCell.GetComponent<Cell>().DisplayCharacter(sweeper, i, j);
         cellMatrix[i, j] = newCell.GetComponent<Cell>();
     }
 
     public void UpdateBoard()
     {
         foreach (Cell c in cellMatrix)
-            c.Configure(sweeper, c.cellPosition.x, c.cellPosition.y);
+            c.DisplayCharacter(sweeper, c.cellPosition.x, c.cellPosition.y);
     }
 
     public void GameEnd(string text)
