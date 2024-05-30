@@ -26,4 +26,12 @@ public class DomainTests
         Assert.IsFalse(sut.IsWet(0, 0));
     }
 
+    [Test]
+    public void DryTerrainAfterDayPassed() {
+        Farm sut = new();
+        sut.Water(0, 0);
+        sut.PassDay();
+        Assert.IsFalse(sut.IsWet(0, 0));
+    }
+
 }
