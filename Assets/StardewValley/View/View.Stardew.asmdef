@@ -1,0 +1,17 @@
+{
+    "name": "View.Stardew",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6f5ac535cb6d42f438d0944474b8542a",
+        "GUID:a982afa4fcc0e034ca09f36ef9d7c7a8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
