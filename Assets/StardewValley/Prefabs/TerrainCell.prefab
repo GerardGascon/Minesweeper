@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1312476982303087202}
   - component: {fileID: 1169309632708783441}
   - component: {fileID: 5676922530350163719}
+  - component: {fileID: 2126611196966712077}
   m_Layer: 5
   m_Name: TerrainCell
   m_TagString: Untagged
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2126611196966712077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3434847071611461969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ca12e79e891942ad75eaad6a5755c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8598044971888228806
 GameObject:
   m_ObjectHideFlags: 0
