@@ -14,4 +14,9 @@ public class Farm
     public bool IsWet(int x, int y) {
         return wateredCells.Contains(new Vector2Int(x, y));
     }
+
+    public void PassDay()
+    {
+        wateredCells.Clear();
+    }
 }
