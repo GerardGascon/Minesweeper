@@ -7,6 +7,8 @@ public class TerrainCell : MonoBehaviour {
     private Farm farm;
 
     [SerializeField] private Vector2Int cellPosition;
+    public int x => cellPosition.x;
+    public int y => cellPosition.y;
 
     private void Awake()
     {
