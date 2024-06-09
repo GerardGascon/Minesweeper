@@ -22,6 +22,6 @@ public class TerrainCell : MonoBehaviour {
     }
 
     private void SetWet() {
-        Debug.Log($"Wet {cellPosition} {name}");
+        GetComponent<Image>().color = Color.blue;
     }
 }
