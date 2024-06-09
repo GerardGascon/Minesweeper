@@ -16,12 +16,16 @@ public class TerrainCell : MonoBehaviour {
     }
 
     public void UpdateCell(Farm domain) {
-        bool isWet = domain.IsWet(cellPosition.x, cellPosition.y);
-        if (isWet)
+        if (domain.IsWet(cellPosition.x, cellPosition.y))
             SetWet();
+        else
+            SetDry();
     }
 
     private void SetWet() {
         GetComponent<Image>().color = Color.blue;
+    }
+    private void SetDry() {
+        GetComponent<Image>().color = Color.white;
     }
 }
