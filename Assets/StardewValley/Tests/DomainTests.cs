@@ -44,16 +44,29 @@ public class DomainTests {
 
 public class RendererMock : FarmRenderer {
 	public Farm receivedFarm { private set; get; }
+
+    public void UpdateFarm(Farm domain)
+    {
+        this.receivedFarm = domain;
+    }
 }
 
-public interface FarmRenderer { }
+public interface FarmRenderer
+{
+    void UpdateFarm(Farm domain);
+}
 
 public class Water {
-	public Water(Farm farm, FarmRenderer view) {
-		throw new System.NotImplementedException();
+    private Farm domain;
+    private FarmRenderer view;
+
+    public Water(Farm farm, FarmRenderer view) {
+		this.domain = farm;
+		this.view = view;
 	}
 
 	public void Run(int x, int y) {
-		throw new System.NotImplementedException();
+		domain.Water(x, y);
+		view.UpdateFarm(domain);
 	}
 }
