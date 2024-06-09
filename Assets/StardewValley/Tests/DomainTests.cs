@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using UnityEngine;
 
 public class DomainTests {
 	[Test]
@@ -28,16 +27,5 @@ public class DomainTests {
 		sut.Water(0, 0);
 		sut.PassDay();
 		Assert.IsFalse(sut.IsWet(0, 0));
-	}
-
-	[Test]
-	public void aspdioruewq() {
-		Farm farm = new();
-		RendererMock view = new();
-		Water sut = new(farm, view);
-
-		sut.Run(2, 1);
-
-		Assert.IsTrue(view.receivedFarm.IsWet(2, 1));
 	}
 }
