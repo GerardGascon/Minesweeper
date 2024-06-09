@@ -41,32 +41,3 @@ public class DomainTests {
 		Assert.IsTrue(view.receivedFarm.IsWet(2, 1));
 	}
 }
-
-public class RendererMock : FarmRenderer {
-	public Farm receivedFarm { private set; get; }
-
-    public void UpdateFarm(Farm domain)
-    {
-        this.receivedFarm = domain;
-    }
-}
-
-public interface FarmRenderer
-{
-    void UpdateFarm(Farm domain);
-}
-
-public class Water {
-    private Farm domain;
-    private FarmRenderer view;
-
-    public Water(Farm farm, FarmRenderer view) {
-		this.domain = farm;
-		this.view = view;
-	}
-
-	public void Run(int x, int y) {
-		domain.Water(x, y);
-		view.UpdateFarm(domain);
-	}
-}
