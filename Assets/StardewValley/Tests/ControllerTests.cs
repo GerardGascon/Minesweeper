@@ -15,11 +15,12 @@ public class ControllerTests {
 	public void PassDay()
 	{
 		Farm farm = new();
+		farm.Water(3,3);
 		RendererMock view = new();
 		PassDay sut = new(farm, view);
-
+		
 		sut.Run();
 
-		Assert.IsFalse(view.receivedFarm.IsWet(2, 1));
+		Assert.IsFalse(view.receivedFarm.IsWet(3, 3));
 	}
 }
