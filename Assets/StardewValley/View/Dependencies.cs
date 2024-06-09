@@ -5,10 +5,12 @@ namespace StardewValley.View {
 	public class Dependencies : MonoBehaviour {
 		public Farm farm { private set; get; }
 		public Water water { private set; get; }
+		public PassDay passday { private set; get; }
 
 		private void Awake() {
 			farm = new Farm();
 			water = new Water(farm, FindObjectOfType<Terrain>());
+			passday = new PassDay(farm, FindObjectOfType<Terrain>());
 		}
 	}
 }
