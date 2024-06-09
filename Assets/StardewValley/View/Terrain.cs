@@ -10,7 +10,7 @@ public class Terrain : MonoBehaviour, FarmRenderer
     {
         foreach (TerrainCell cell in cells)
         {
-            bool isWet = domain.IsWet(cell.x, cell.y);
+            cell.UpdateCell(domain);
         }
     }
 
