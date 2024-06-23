@@ -8,8 +8,6 @@ public class Farm
     
     private Dictionary<(int,int), Cell> cells = new();
 
-    private List<Vector2Int> plantedCells = new();
-
     private void Dig(int x, int y) {
         if (cells.ContainsKey((x, y)))
             return;
@@ -38,13 +36,10 @@ public class Farm
     {
         Dig(x, y);
         cells[(x, y)].isPlanted = true;
-        plantedCells.Add(new Vector2Int(x, y));
     }
 
     public bool HasSeed(int x, int y) {
-        bool hasSeed = plantedCells.Contains(new Vector2Int(x, y));
-        Debug.Assert(hasSeed == (cells.ContainsKey((x, y)) && cells[(x, y)].isPlanted));
-        return hasSeed;
+        return cells.ContainsKey((x, y)) && cells[(x, y)].isPlanted;
     }
 
     public bool IsGrown(int x, int y) {
