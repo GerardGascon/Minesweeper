@@ -27,12 +27,7 @@ public class Farm
     public void PassDay()
     {
         foreach (var keyValue in cells.Values)
-        {
-            if (keyValue.isPlanted && keyValue.isWet)
-                keyValue.isGrown = true;
-
-            keyValue.isWet = false;
-        }
+            keyValue.PassDay();
     }
 
     public void PlantSeed(int x, int y)
