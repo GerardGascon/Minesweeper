@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Farm
 {
-    
     private Dictionary<(int,int), Cell> cells = new();
 
     private void Dig(int x, int y) {
@@ -21,7 +20,7 @@ public class Farm
     }
 
     public bool IsWet(int x, int y) {
-        return cells.ContainsKey((x,y)) && cells[(x, y)].isWet;
+        return In((x, y)).isWet;
     }
 
     public void PassDay()
@@ -36,11 +35,18 @@ public class Farm
         cells[(x, y)].isPlanted = true;
     }
 
-    public bool HasSeed(int x, int y) {
-        return cells.ContainsKey((x, y)) && cells[(x, y)].isPlanted;
+    public bool IsPlanted(int x, int y) {
+        return In((x, y)).isPlanted;
     }
 
     public bool IsGrown(int x, int y) {
-        return cells.ContainsKey((x, y)) && cells[(x, y)].isGrown;
+        return In((x, y)).isGrown;
+    }
+
+    private Cell In((int x,int y) cell)
+    {
+        if (cells.ContainsKey(cell))
+            return cells[cell];
+        return new();
     }
 }
