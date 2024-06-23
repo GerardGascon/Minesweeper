@@ -6,6 +6,7 @@ using UnityEngine;
 public class Farm
 {
     private List<Cell> cells = new();
+    private Dictionary<Vector2Int, Cell> djdtfubknfk = new();
 
     private List<Vector2Int> wateredCells = new();
     private List<Vector2Int> plantedCells = new();
@@ -14,10 +15,15 @@ public class Farm
     {
         wateredCells.Add(new Vector2Int(x, y));
         cells.Add(new Cell(x,y));
+        djdtfubknfk[new Vector2Int(x, y)] = new Cell(x, y);
+        djdtfubknfk[new Vector2Int(x, y)].isWet = true;
     }
 
     public bool IsWet(int x, int y) {
-        return wateredCells.Contains(new Vector2Int(x, y));
+        var result = wateredCells.Contains(new Vector2Int(x, y));
+        var sdfs = djdtfubknfk.ContainsKey(new Vector2Int(x,y)) && djdtfubknfk[new Vector2Int(x, y)].isWet;
+        Debug.Assert(result == sdfs);
+        return result;
     }
 
     public void PassDay()
