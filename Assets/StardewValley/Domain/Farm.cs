@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Farm
 {
-    private List<Cell> cells = new();
+    
     private Dictionary<Vector2Int, Cell> djdtfubknfk = new();
 
     private List<Vector2Int> wateredCells = new();
@@ -14,7 +14,7 @@ public class Farm
     public void Water(int x, int y)
     {
         wateredCells.Add(new Vector2Int(x, y));
-        cells.Add(new Cell(x,y));
+        
         djdtfubknfk[new Vector2Int(x, y)] = new Cell(x, y);
         djdtfubknfk[new Vector2Int(x, y)].isWet = true;
     }
