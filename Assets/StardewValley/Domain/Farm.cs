@@ -18,7 +18,6 @@ public class Farm
     {
         Dig(x, y);
         cells[(x, y)].isWet = true;
-        cells[(x,y)].isGrown = true;
     }
 
     public bool IsWet(int x, int y) {
@@ -29,6 +28,9 @@ public class Farm
     {
         foreach (var keyValue in cells.Values)
         {
+            if (keyValue.isPlanted && keyValue.isWet)
+                keyValue.isGrown = true;
+
             keyValue.isWet = false;
         }
     }
