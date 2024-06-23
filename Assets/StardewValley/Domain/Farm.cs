@@ -6,6 +6,7 @@ using UnityEngine;
 public class Farm
 {
     private List<Vector2Int> wateredCells = new();
+    private List<Vector2Int> plantedCells = new();
 
     public void Water(int x, int y)
     {
@@ -23,11 +24,10 @@ public class Farm
 
     public void PlantSeed(int x, int y)
     {
-        
+        plantedCells.Add(new Vector2Int(x, y));
     }
 
-    public bool HasSeed(int x, int y)
-    {
-        return true;
+    public bool HasSeed(int x, int y) {
+        return plantedCells.Contains(new Vector2Int(x, y));
     }
 }

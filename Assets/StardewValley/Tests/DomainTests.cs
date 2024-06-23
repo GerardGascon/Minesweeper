@@ -36,4 +36,11 @@ public class DomainTests {
 		sut.PlantSeed(0, 0);
 		Assert.IsTrue(sut.HasSeed(0, 0));
     }
+
+	[Test]
+	public void IsNotPlanted()
+	{
+		Farm sut = new();
+		Assert.IsFalse(sut.HasSeed(0, 0));
+	}
 }
