@@ -30,4 +30,8 @@ public class Farm
     public bool HasSeed(int x, int y) {
         return plantedCells.Contains(new Vector2Int(x, y));
     }
+
+    public bool IsGrown(int x, int y) {
+        return true;
+    }
 }

@@ -43,4 +43,15 @@ public class DomainTests {
 		Farm sut = new();
 		Assert.IsFalse(sut.HasSeed(0, 0));
 	}
+
+	[Test]
+	public void SeedGrowsWhenWatered() {
+		Farm sut = new();
+
+		sut.PlantSeed(0, 1);
+		sut.Water(0, 1);
+		sut.PassDay();
+
+		Assert.IsTrue(sut.IsGrown(0, 1));
+	}
 }
