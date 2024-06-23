@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,5 +19,15 @@ public class Farm
     public void PassDay()
     {
         wateredCells.Clear();
+    }
+
+    public void PlantSeed(int v1, int v2)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool? HasSeed(int v1, int v2)
+    {
+        throw new NotImplementedException();
     }
 }

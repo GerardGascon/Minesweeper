@@ -28,4 +28,12 @@ public class DomainTests {
 		sut.PassDay();
 		Assert.IsFalse(sut.IsWet(0, 0));
 	}
+
+	[Test]
+	public void IsPlanted()
+    {
+		Farm sut = new();
+		sut.PlantSeed(0, 0);
+		Assert.IsTrue(sut.HasSeed(0, 0));
+    }
 }
