@@ -21,13 +21,13 @@ public class Farm
         wateredCells.Clear();
     }
 
-    public void PlantSeed(int v1, int v2)
+    public void PlantSeed(int x, int y)
     {
-        throw new NotImplementedException();
+        
     }
 
-    public bool? HasSeed(int v1, int v2)
+    public bool HasSeed(int x, int y)
     {
-        throw new NotImplementedException();
+        return true;
     }
 }
