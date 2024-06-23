@@ -18,6 +18,7 @@ public class Farm
     {
         Dig(x, y);
         cells[(x, y)].isWet = true;
+        cells[(x,y)].isGrown = true;
     }
 
     public bool IsWet(int x, int y) {
@@ -43,6 +44,6 @@ public class Farm
     }
 
     public bool IsGrown(int x, int y) {
-        return true;
+        return cells.ContainsKey((x, y)) && cells[(x, y)].isGrown;
     }
 }
