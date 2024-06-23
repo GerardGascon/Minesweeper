@@ -6,21 +6,25 @@ using UnityEngine;
 public class Farm
 {
     
-    private Dictionary<Vector2Int, Cell> cells = new();
+    private Dictionary<(int,int), Cell> cells = new();
 
     private List<Vector2Int> wateredCells = new();
     private List<Vector2Int> plantedCells = new();
 
+    private void Dig(int x, int y)
+    {
+        cells[(x, y)] = new();
+    }
+
     public void Water(int x, int y)
     {
         wateredCells.Add(new Vector2Int(x, y));
-        
-        cells[new Vector2Int(x, y)] = new Cell(x, y);
-        cells[new Vector2Int(x, y)].isWet = true;
+        Dig(x, y);
+        cells[(x, y)].isWet = true;
     }
 
     public bool IsWet(int x, int y) {
-        return cells.ContainsKey(new Vector2Int(x,y)) && cells[new Vector2Int(x, y)].isWet;
+        return cells.ContainsKey((x,y)) && cells[(x, y)].isWet;
     }
 
     public void PassDay()
