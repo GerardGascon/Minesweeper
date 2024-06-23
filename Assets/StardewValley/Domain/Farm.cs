@@ -28,6 +28,11 @@ public class Farm
 
     public void PassDay()
     {
+        foreach (var keyValue in djdtfubknfk.Values)
+        {
+            keyValue.isWet = false;
+        }
+
         wateredCells.Clear();
     }
 
