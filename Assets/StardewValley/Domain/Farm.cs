@@ -49,4 +49,8 @@ public class Farm
             return cells[cell];
         return new();
     }
+
+    public int GetCellStage(int x, int y) {
+        return In((x, y)).growStage;
+    }
 }

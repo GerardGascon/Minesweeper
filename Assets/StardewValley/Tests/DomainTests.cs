@@ -77,4 +77,23 @@ public class DomainTests {
 		Assert.IsFalse(sut.IsGrown(0, 1));
 	}
 
+	[Test]
+	public void GrownStageDefaultAtZero() {
+		Farm sut = new();
+
+		Assert.AreEqual(0, sut.GetCellStage(0, 2));
+	}
+
+	[Test]
+	public void GrownStageAtOne_AfterDayWhenPlanted() {
+		Farm sut = new();
+
+		int previousStage = sut.GetCellStage(0, 2);
+
+		sut.Water(0, 2);
+		sut.PlantSeed(0, 2);
+		sut.PassDay();
+
+		Assert.AreEqual(previousStage + 1, sut.GetCellStage(0, 2));
+	}
 }
