@@ -28,7 +28,8 @@ public class TerrainCell : MonoBehaviour {
             SetDry();
 
         if (domain.IsGrown(cellPosition.x, cellPosition.y))
-            SetGrown();
+            SetGrown(domain.GetCellStage(cellPosition.x, cellPosition.y));
+            
         else if (domain.IsPlanted(cellPosition.x, cellPosition.y))
             SetPlanted();
         else
@@ -49,9 +50,9 @@ public class TerrainCell : MonoBehaviour {
     {
         GetComponentInChildren<Text>().text = "Empty";
     }
-    private void SetGrown()
+    private void SetGrown(int stage)
     {
-        GetComponentInChildren<Text>().text = "Grown";
+        GetComponentInChildren<Text>().text = $"Stage: {stage}";
     }
 
 }
