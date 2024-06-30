@@ -8,7 +8,13 @@ public class TerrainCell : MonoBehaviour {
 
     private void Awake()
     {
-        GetComponent<Button>().onClick.AddListener(Water);
+        GetComponent<ButtonClick>().leftClick += Water;
+        GetComponent<ButtonClick>().rightClick += Plant;
+    }
+
+    private void Plant()
+    {
+        FindObjectOfType<Dependencies>().plant.Run(cellPosition.x, cellPosition.y);
     }
 
     private void Water() {
