@@ -21,44 +21,27 @@ public class TerrainCell : MonoBehaviour {
         FindObjectOfType<Dependencies>().water.Run(cellPosition.x, cellPosition.y);
     }
 
-    public void UpdateCell(Farm domain) {
+    public void UpdateCell(Farm domain)
+    {
         bool isWet = domain.IsWet(cellPosition.x, cellPosition.y);
         bool isPlanted = domain.IsPlanted(cellPosition.x, cellPosition.y);
         bool isGrown = domain.IsGrown(cellPosition.x, cellPosition.y);
         int cellStage = domain.GetCellStage(cellPosition.x, cellPosition.y);
 
-        UpdateCellDomain.GetCellProperties(isWet,isPlanted,isGrown,cellStage);
-        if (domain.IsWet(cellPosition.x, cellPosition.y))
-            SetWet();
-        else
-            SetDry();
+        var newProperties = UpdateCellDomain.GetCellProperties(isWet,isPlanted,isGrown,cellStage);
 
-        if (domain.IsGrown(cellPosition.x, cellPosition.y))
-            SetGrown(domain.GetCellStage(cellPosition.x, cellPosition.y));
-            
-        else if (domain.IsPlanted(cellPosition.x, cellPosition.y))
-            SetPlanted();
-        else
-            SetNotPlanted();
+        SetText(newProperties.cellText);
+        SetColor(newProperties.cellColor);
     }
 
-    private void SetWet() {
-        GetComponent<Image>().color = Color.blue;
-    }
-    private void SetDry() {
-        GetComponent<Image>().color = Color.white;
-    }
-    private void SetPlanted()
+    private void SetColor(Color cellColor)
     {
-        GetComponentInChildren<Text>().text = "Planted";
+        GetComponent<Image>().color = cellColor;
     }
-    private void SetNotPlanted()
+
+    private void SetText(string cellText)
     {
-        GetComponentInChildren<Text>().text = "Empty";
-    }
-    private void SetGrown(int stage)
-    {
-        GetComponentInChildren<Text>().text = $"Stage: {stage}";
+        GetComponentInChildren<Text>().text = cellText;
     }
 
 }
