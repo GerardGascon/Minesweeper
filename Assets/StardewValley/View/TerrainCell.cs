@@ -22,6 +22,12 @@ public class TerrainCell : MonoBehaviour {
     }
 
     public void UpdateCell(Farm domain) {
+        bool isWet = domain.IsWet(cellPosition.x, cellPosition.y);
+        bool isPlanted = domain.IsPlanted(cellPosition.x, cellPosition.y);
+        bool isGrown = domain.IsGrown(cellPosition.x, cellPosition.y);
+        int cellStage = domain.GetCellStage(cellPosition.x, cellPosition.y);
+
+        UpdateCellDomain.GetCellProperties(isWet,isPlanted,isGrown,cellStage);
         if (domain.IsWet(cellPosition.x, cellPosition.y))
             SetWet();
         else
