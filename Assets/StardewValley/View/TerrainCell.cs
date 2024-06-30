@@ -27,7 +27,9 @@ public class TerrainCell : MonoBehaviour {
         else
             SetDry();
 
-        if(domain.IsPlanted(cellPosition.x, cellPosition.y))
+        if (domain.IsGrown(cellPosition.x, cellPosition.y))
+            SetGrown();
+        else if (domain.IsPlanted(cellPosition.x, cellPosition.y))
             SetPlanted();
         else
             SetNotPlanted();
@@ -46,6 +48,10 @@ public class TerrainCell : MonoBehaviour {
     private void SetNotPlanted()
     {
         GetComponentInChildren<Text>().text = "Empty";
+    }
+    private void SetGrown()
+    {
+        GetComponentInChildren<Text>().text = "Grown";
     }
 
 }
