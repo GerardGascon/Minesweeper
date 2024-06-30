@@ -26,6 +26,11 @@ public class TerrainCell : MonoBehaviour {
             SetWet();
         else
             SetDry();
+
+        if(domain.IsPlanted(cellPosition.x, cellPosition.y))
+            SetPlanted();
+        else
+            SetNotPlanted();
     }
 
     private void SetWet() {
@@ -34,4 +39,13 @@ public class TerrainCell : MonoBehaviour {
     private void SetDry() {
         GetComponent<Image>().color = Color.white;
     }
+    private void SetPlanted()
+    {
+        GetComponentInChildren<Text>().text = "Planted";
+    }
+    private void SetNotPlanted()
+    {
+        GetComponentInChildren<Text>().text = "Empty";
+    }
+
 }
