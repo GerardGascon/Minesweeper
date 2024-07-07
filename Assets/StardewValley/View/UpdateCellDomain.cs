@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class UpdateCellDomain
 {
-    public static CellProperties GetCellProperties(bool isWet, bool isPlanted, bool isGrown, int cellStage)
+    private static CellProperties GetCellProperties(bool isWet, bool isPlanted, bool isGrown, int cellStage)
     {
         CellProperties newCellProperties = new();
 
@@ -20,6 +20,12 @@ public static class UpdateCellDomain
             newCellProperties.cellText = "Empty";
 
         return newCellProperties;
+    }
+    public static CellProperties GetCellProperties(Farm farm, Vector2Int pos)
+    {
+        var x = pos.x;
+        var y = pos.y;
+        return GetCellProperties(farm.IsWet(x,y), farm.IsPlanted(x,y), farm.IsGrown(x,y), farm.GetCellStage(x,y));
     }
 
 }
