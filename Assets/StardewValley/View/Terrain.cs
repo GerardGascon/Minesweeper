@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Terrain : MonoBehaviour, FarmRenderer
 {
-    Soil[] cells;
+    Soil[] soils;
+
+    public void Inject(Soil[] soils) {
+        this.soils = soils;
+    }
 
     public void UpdateFarm(Farm domain)
     {
-        foreach (Soil cell in cells)
+        foreach (Soil soil in soils)
         {
-            cell.UpdateCell(domain);
+            soil.UpdateCell(domain);
         }
-    }
-
-    private void Awake()
-    {
-        cells = FindObjectsOfType<Soil>();
     }
 }

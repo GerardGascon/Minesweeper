@@ -10,10 +10,12 @@ namespace StardewValley.View {
 			var passDay = new PassDay(farm, FindObjectOfType<Terrain>());
 			var plantSeed = new PlantSeed(farm, FindObjectOfType<Terrain>());
 
-			foreach (var soil in FindObjectsOfType<Soil>())
+			Soil[] soils = FindObjectsOfType<Soil>();
+			foreach (var soil in soils)
 			{
 				soil.Inject(plantSeed, water);
             }
+			FindObjectOfType<Terrain>().Inject(soils);
 			FindObjectOfType<PassDayButton>().Inject(passDay);
 		}
 	}
