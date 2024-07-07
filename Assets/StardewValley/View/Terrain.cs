@@ -16,7 +16,7 @@ public class Terrain : MonoBehaviour, FarmRenderer
     {
         foreach (Soil soil in soils)
         {
-            soil.UpdateCell(domain);
+            soil.UpdateSoil(domain);
         }
     }
 }

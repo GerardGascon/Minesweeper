@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 namespace StardewValley.View {
     public class Soil : MonoBehaviour {
-        [SerializeField] private Vector2Int cellPosition;
+        [SerializeField] private Vector2Int position;
+
         PlantSeed plantSeed;
         Water water;
 
@@ -20,30 +21,30 @@ namespace StardewValley.View {
         }
         private void Plant()
         {
-            plantSeed.Run(cellPosition.x, cellPosition.y);
+            plantSeed.Run(position.x, position.y);
         }
 
         private void Water()
         {
-            water.Run(cellPosition.x, cellPosition.y);
+            water.Run(position.x, position.y);
         }
 
-        public void UpdateCell(Farm domain)
+        public void UpdateSoil(Farm domain)
         {
-            var newProperties = UpdateCellDomain.GetCellProperties(domain, cellPosition);
+            var newProperties = UpdateSoilDomain.GetSoilProperties(domain, position);
 
-            SetText(newProperties.cellText);
-            SetColor(newProperties.cellColor);
+            SetText(newProperties.text);
+            SetColor(newProperties.color);
         }
 
-        private void SetColor(Color cellColor)
+        private void SetColor(Color color)
         {
-            GetComponent<Image>().color = cellColor;
+            GetComponent<Image>().color = color;
         }
 
-        private void SetText(string cellText)
+        private void SetText(string text)
         {
-            GetComponentInChildren<Text>().text = cellText;
+            GetComponentInChildren<Text>().text = text;
         }
 
     }
