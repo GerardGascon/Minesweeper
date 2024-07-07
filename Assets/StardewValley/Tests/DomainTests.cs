@@ -82,19 +82,19 @@ public class DomainTests {
 	public void GrownStageDefaultAtZero() {
 		Farm sut = new();
 
-		Assert.AreEqual(0, sut.GetCellStage(0, 2));
+		Assert.AreEqual(0, sut.GetSoilStage(0, 2));
 	}
 
 	[Test]
 	public void GrownStageAtOne_AfterDayWhenPlanted() {
 		Farm sut = new();
 
-		int previousStage = sut.GetCellStage(0, 2);
+		int previousStage = sut.GetSoilStage(0, 2);
 
 		sut.Water(0, 2);
 		sut.PlantSeed(0, 2);
 		sut.PassDay();
 
-		Assert.AreEqual(previousStage + 1, sut.GetCellStage(0, 2));
+		Assert.AreEqual(previousStage + 1, sut.GetSoilStage(0, 2));
 	}
 }

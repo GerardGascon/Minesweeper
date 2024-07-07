@@ -26,7 +26,7 @@ public static class UpdateCellDomain
     {
         var x = pos.x;
         var y = pos.y;
-        return GetCellProperties(farm.IsWet(x,y), farm.IsPlanted(x,y), farm.IsGrown(x,y), farm.GetCellStage(x,y));
+        return GetCellProperties(farm.IsWet(x,y), farm.IsPlanted(x,y), farm.IsGrown(x,y), farm.GetSoilStage(x,y));
     }
 
 }

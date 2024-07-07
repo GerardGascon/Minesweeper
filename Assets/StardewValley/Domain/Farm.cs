@@ -3,18 +3,18 @@ using System.Collections.Generic;
 namespace StardewValley.Domain {
     public class Farm
     {
-        private Dictionary<(int,int), Soil> cells = new();
+        private Dictionary<(int,int), Soil> soils = new();
 
         private void Dig(int x, int y) {
-            if (cells.ContainsKey((x, y)))
+            if (soils.ContainsKey((x, y)))
                 return;
-            cells[(x, y)] = new();
+            soils[(x, y)] = new();
         }
 
         public void Water(int x, int y)
         {
             Dig(x, y);
-            cells[(x, y)].isWet = true;
+            soils[(x, y)].isWet = true;
         }
 
         public bool IsWet(int x, int y) {
@@ -23,14 +23,14 @@ namespace StardewValley.Domain {
 
         public void PassDay()
         {
-            foreach (var keyValue in cells.Values)
+            foreach (var keyValue in soils.Values)
                 keyValue.PassDay();
         }
 
         public void PlantSeed(int x, int y)
         {
             Dig(x, y);
-            cells[(x, y)].isPlanted = true;
+            soils[(x, y)].isPlanted = true;
         }
 
         public bool IsPlanted(int x, int y) {
@@ -41,14 +41,14 @@ namespace StardewValley.Domain {
             return In((x, y)).isGrown;
         }
 
-        private Soil In((int x,int y) cell)
+        private Soil In((int x,int y) soil)
         {
-            if (cells.ContainsKey(cell))
-                return cells[cell];
+            if (soils.ContainsKey(soil))
+                return soils[soil];
             return new();
         }
 
-        public int GetCellStage(int x, int y) {
+        public int GetSoilStage(int x, int y) {
             return In((x, y)).growStage;
         }
     }
