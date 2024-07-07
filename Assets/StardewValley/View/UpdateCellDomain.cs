@@ -1,4 +1,5 @@
 using System;
+using StardewValley.Domain;
 using UnityEngine;
 
 public static class UpdateCellDomain

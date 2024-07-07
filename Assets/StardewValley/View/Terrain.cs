@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using StardewValley.Domain;
 using UnityEngine;
 
 public class Terrain : MonoBehaviour, FarmRenderer

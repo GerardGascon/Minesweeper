@@ -1,3 +1,5 @@
+using StardewValley.Domain;
+
 public class PlantSeed
 {
     private Farm domain;

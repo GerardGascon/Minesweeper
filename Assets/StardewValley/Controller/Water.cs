@@ -1,3 +1,5 @@
+using StardewValley.Domain;
+
 public class Water {
     private Farm domain;
     private FarmRenderer view;

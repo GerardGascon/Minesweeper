@@ -1,3 +1,5 @@
+using StardewValley.Domain;
+
 public class RendererMock : FarmRenderer {
     public Farm receivedFarm { private set; get; }
 

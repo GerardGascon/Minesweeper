@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using StardewValley.Domain;
 
 public class ControllerTests {
 	[Test]

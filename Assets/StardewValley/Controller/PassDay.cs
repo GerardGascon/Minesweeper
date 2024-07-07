@@ -1,4 +1,5 @@
 ﻿using System;
+using StardewValley.Domain;
 
 public class PassDay
 {
