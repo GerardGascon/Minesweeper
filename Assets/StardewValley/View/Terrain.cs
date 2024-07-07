@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using StardewValley.Domain;
 using UnityEngine;
+using Soil = StardewValley.View.Soil;
 
 public class Terrain : MonoBehaviour, FarmRenderer
 {

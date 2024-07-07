@@ -1,38 +1,39 @@
-using System;
 using StardewValley.Domain;
 using UnityEngine;
 
-public static class UpdateCellDomain
-{
-    private static CellProperties GetCellProperties(bool isWet, bool isPlanted, bool isGrown, int cellStage)
+namespace StardewValley.View {
+    public static class UpdateCellDomain
     {
-        CellProperties newCellProperties = new();
+        private static CellProperties GetCellProperties(bool isWet, bool isPlanted, bool isGrown, int cellStage)
+        {
+            CellProperties newCellProperties = new();
 
-        if (isWet)
-            newCellProperties.cellColor = Color.blue;
-        else
-            newCellProperties.cellColor = Color.white;
+            if (isWet)
+                newCellProperties.cellColor = Color.blue;
+            else
+                newCellProperties.cellColor = Color.white;
 
-        if (isGrown)
-            newCellProperties.cellText = $"Stage: {cellStage}";
-        else if (isPlanted)
-            newCellProperties.cellText = "Planted";
-        else
-            newCellProperties.cellText = "Empty";
+            if (isGrown)
+                newCellProperties.cellText = $"Stage: {cellStage}";
+            else if (isPlanted)
+                newCellProperties.cellText = "Planted";
+            else
+                newCellProperties.cellText = "Empty";
 
-        return newCellProperties;
+            return newCellProperties;
+        }
+        public static CellProperties GetCellProperties(Farm farm, Vector2Int pos)
+        {
+            var x = pos.x;
+            var y = pos.y;
+            return GetCellProperties(farm.IsWet(x,y), farm.IsPlanted(x,y), farm.IsGrown(x,y), farm.GetSoilStage(x,y));
+        }
+
     }
-    public static CellProperties GetCellProperties(Farm farm, Vector2Int pos)
+
+    public struct CellProperties
     {
-        var x = pos.x;
-        var y = pos.y;
-        return GetCellProperties(farm.IsWet(x,y), farm.IsPlanted(x,y), farm.IsGrown(x,y), farm.GetSoilStage(x,y));
+        public Color cellColor;
+        public string cellText;
     }
-
-}
-
-public struct CellProperties
-{
-    public Color cellColor;
-    public string cellText;
 }
