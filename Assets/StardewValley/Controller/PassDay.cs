@@ -1,20 +1,22 @@
 ﻿using System;
 using StardewValley.Domain;
 
-public class PassDay
-{
-    private Farm farm;
-    private FarmRenderer view;
-
-    public PassDay(Farm farm, FarmRenderer view)
+namespace StardewValley.Controller {
+    public class PassDay
     {
-        this.farm = farm;
-        this.view = view;
-    }
+        private Farm farm;
+        private FarmRenderer view;
 
-    public void Run()
-    {
-        farm.PassDay();
-        view.UpdateFarm(farm);
+        public PassDay(Farm farm, FarmRenderer view)
+        {
+            this.farm = farm;
+            this.view = view;
+        }
+
+        public void Run()
+        {
+            farm.PassDay();
+            view.UpdateFarm(farm);
+        }
     }
 }

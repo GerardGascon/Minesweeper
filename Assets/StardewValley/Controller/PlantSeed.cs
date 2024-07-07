@@ -1,19 +1,21 @@
 using StardewValley.Domain;
 
-public class PlantSeed
-{
-    private Farm domain;
-    private FarmRenderer view;
-
-    public PlantSeed(Farm farm, FarmRenderer view)
+namespace StardewValley.Controller {
+    public class PlantSeed
     {
-        this.domain = farm;
-        this.view = view;
-    }
+        private Farm domain;
+        private FarmRenderer view;
 
-    public void Run(int x, int y)
-    {
-        domain.PlantSeed(x, y);
-        view.UpdateFarm(domain);
+        public PlantSeed(Farm farm, FarmRenderer view)
+        {
+            this.domain = farm;
+            this.view = view;
+        }
+
+        public void Run(int x, int y)
+        {
+            domain.PlantSeed(x, y);
+            view.UpdateFarm(domain);
+        }
     }
 }
